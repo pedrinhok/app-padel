@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # before_action :authenticate_user, except: [:new, :create]
+  before_action :authenticate, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        # sign_in(@user)
+        sign_in(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
