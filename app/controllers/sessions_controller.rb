@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 	before_action :authenticate, only: :destroy
 
 	def new
-		redirect_to users_path if signned_in?
+		redirect_to users_path if signed_in?
 	end
 
 	def create
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			sign_in(@user)
 			redirect_to users_path
 		else
-			flash[:danger] = ""
+			flash[:danger] = "Invalid email or password"
 			redirect_to root_path
 		end
 	end

@@ -15,3 +15,6 @@
  */
 
 .margin-top-50 { margin-top: 50px !important; }
+
+.alert-container { position: absolute; bottom: 50px; right: 50px; }
+.alert-container .alert { position: relative; z-index: 999999; right: 50px; width: 350px; padding: 8px 35px 8px 15px; }
