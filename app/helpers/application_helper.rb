@@ -7,7 +7,7 @@ module ApplicationHelper
 	end
 
 	def has_error attribute
-		return "has-error" if flash[:danger] && flash[:danger].keys.include? attribute
+		return "has-error" if flash[:danger] && flash[:danger].keys.include?(attribute)
 	end
 
 end
