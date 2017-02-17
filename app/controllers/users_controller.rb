@@ -22,7 +22,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in(@user)
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        flash[:success] = "User was successfully created"
+        format.html { redirect_to root_path }
         # format.json { render :show, status: :created, location: @user }
       else
         flash[:danger] = @user.errors
@@ -35,9 +36,11 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        flash[:success] = "User was successfully updated"
+        format.html { redirect_to users_path }
         # format.json { render :show, status: :ok, location: @user }
       else
+        flash[:danger] = @user.errors
         format.html { render :edit }
         # format.json { render json: @user.errors, status: :unprocessable_entity }
       end
