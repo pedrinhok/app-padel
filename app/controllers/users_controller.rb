@@ -43,13 +43,17 @@ class UsersController < ApplicationController
     sign_out if @user.id == @current_user.id
     @user.destroy
     f(:success, "User was successfully destroyed")
-    redirect_to users_url
+    redirect_to sign_in_path
   end
 
   private
 
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(id: params[:id])
+      if @user.nil?
+        f(:danger, "User not found")
+        redirect_to users_path
+      end
     end
 
     def user_params
