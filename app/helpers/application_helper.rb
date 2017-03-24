@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def f type, messages
+		flash[type] = messages
+	end
+
 	def active_page(*paths)
 		active = false  
 		paths.each { |path| active ||= current_page?(path) }  

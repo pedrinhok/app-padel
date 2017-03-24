@@ -19,40 +19,31 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        sign_in(@user)
-        flash[:success] = "User was successfully created"
-        format.html { redirect_to root_path }
-        # format.json { render :show, status: :created, location: @user }
-      else
-        flash[:danger] = @user.errors
-        format.html { render :new }
-        # format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      sign_in(@user)
+      f(:success, "User was successfully created")
+      redirect_to root_path
+    else
+      f(:danger, @user.errors)
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        flash[:success] = "User was successfully updated"
-        format.html { redirect_to users_path }
-        # format.json { render :show, status: :ok, location: @user }
-      else
-        flash[:danger] = @user.errors
-        format.html { render :edit }
-        # format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      f(:success, "User was successfully updated")
+      redirect_to users_path
+    else
+      f(:danger, @user.errors)
+      render :edit
     end
   end
 
   def destroy
+    sign_out if @user.id == @current_user.id
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      # format.json { head :no_content }
-    end
+    f(:success, "User was successfully destroyed")
+    redirect_to users_url
   end
 
   private
