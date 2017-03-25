@@ -13,13 +13,13 @@ class SessionsController < ApplicationController
 			redirect_to users_path
 		else
 			f(:danger, "Invalid email or password")
-			redirect_to root_path
+			render :new
 		end
 	end
 
 	def destroy
 		sign_out
-		redirect_to root_path
+		redirect_to sign_in_path
 	end
 
 end

@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     sign_out if @user.id == @current_user.id
     @user.destroy
     f(:success, "User was successfully destroyed")
-    redirect_to sign_in_path
+    redirect_to users_path
   end
 
   private
