@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-def sign_in user
-	post :create, { session: { email: user.email, password: user.password } }
-end
-
 RSpec.describe SessionsController, type: :controller do
 
 	let(:user) { FactoryGirl.create(:user) }
