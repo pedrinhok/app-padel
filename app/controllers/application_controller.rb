@@ -1,14 +1,14 @@
 class ApplicationController < ActionController::Base
 
-  protect_from_forgery with: :exception
+	protect_from_forgery with: :exception
 
-  include ApplicationHelper
-  include SessionsHelper
+	include ApplicationHelper
+	include SessionsHelper
 
-  private
+	private
 
-  def authenticate
-  	redirect_to root_path unless current_user
-  end
+	def authenticate
+		redirect_to sign_in_path unless current_user
+	end
 
 end

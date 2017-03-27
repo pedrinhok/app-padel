@@ -8,7 +8,7 @@ RSpec.describe SessionsController, type: :controller do
 
 		context "when user is authenticated" do
 			it "redirects to users#index" do
-				sign_in user
+				post :create, { session: { email: user.email, password: user.password } }
 				get :new
 				expect(response).to redirect_to(users_path)
 			end
@@ -38,11 +38,11 @@ RSpec.describe SessionsController, type: :controller do
 
 		context "with valid params" do
 			it "authenticates user" do
-				sign_in user
+				post :create, { session: { email: user.email, password: user.password } }
 				expect(session[:user_id]).to eq(user.id)
 			end
 			it "redirects to users#index" do
-				sign_in user
+				post :create, { session: { email: user.email, password: user.password } }
 				expect(response).to redirect_to(users_path)
 			end
 		end
@@ -52,12 +52,12 @@ RSpec.describe SessionsController, type: :controller do
 	describe "DELETE #destroy" do
 
 		it "destroys user session" do
-			sign_in user
+			post :create, { session: { email: user.email, password: user.password } }
 			delete :destroy
 			expect(session[:user_id]).to be_nil
 		end
 		it "redirects to sessions#new" do
-			sign_in user
+			post :create, { session: { email: user.email, password: user.password } }
 			delete :destroy
 			expect(response).to redirect_to(sign_in_path)
 		end

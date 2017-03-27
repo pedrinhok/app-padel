@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       f(:success, "User was successfully created")
-      redirect_to root_path
+      redirect_to users_path
     else
       f(:danger, @user.errors)
       render :new

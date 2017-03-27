@@ -1,7 +1,7 @@
 module SpecHelper
 
 	def sign_in user
-		post :create, { session: { email: user.email, password: user.password } }
+		session[:user_id] = user.id
 	end
 
 end
