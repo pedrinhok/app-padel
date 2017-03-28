@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      f(:success, "User was successfully created")
+      f(:success, t("flash.users.created"))
       redirect_to users_path
     else
       f(:danger, @user.errors)
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      f(:success, "User was successfully updated")
+      f(:success, t("flash.users.updated"))
       redirect_to users_path
     else
       f(:danger, @user.errors)
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def destroy
     sign_out if @user.id == @current_user.id
     @user.destroy
-    f(:success, "User was successfully destroyed")
+    f(:success, t("flash.users.destroyed"))
     redirect_to users_path
   end
 
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find_by(id: params[:id])
       if @user.nil?
-        f(:danger, "User not found")
+        f(:danger, t("errors.messages.not_found", record: t("user")))
         redirect_to users_path
       end
     end

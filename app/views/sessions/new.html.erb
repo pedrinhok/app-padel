@@ -1,11 +1,15 @@
-<%= form_for(:session, url: sessions_path, html: { class: "form-signin margin-top-50" }) do |f| %>
+<%= form_for(:session, url: sessions_path, html: { class: "form-sm form-signin well" }) do |f| %>
 
-	<h2 class="form-signin-heading">Sign in</h2>
+	<legend>
+		<%= T("sign_in") %>
+		<%= link_to image_tag("flags/en.svg", size: "16", class: "margin pull-right"), sign_in_path(locale: :en) %>
+		<%= link_to image_tag("flags/pt.svg", size: "16", class: "margin pull-right"), sign_in_path(locale: :pt) %>
+	</legend>
 
-	<%= f.email_field :email, { class: "form-control", placeholder: "Email", autofocus: true } %>
-	<%= f.password_field :password, { class: "form-control", placeholder: "Password" } %>
+	<%= f.email_field :email, { class: "form-control", placeholder: T("email"), autofocus: true } %>
+	<%= f.password_field :password, { class: "form-control", placeholder: T("password") } %>
 
-	<%= f.submit "Sign in", { class: "btn btn-lg btn-primary btn-block" } %>
-	<%= link_to "Sign up", new_user_path, { class: "btn btn-lg btn-default btn-block" } %>
+	<%= f.submit T("sign_in"), { class: "btn btn-lg btn-primary btn-block" } %>
+	<%= link_to T("sign_up"), new_user_path, { class: "btn btn-lg btn-default btn-block" } %>
 
 <% end %>

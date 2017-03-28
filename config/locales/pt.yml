@@ -1,0 +1,27 @@
+pt:
+  destroy: "deletar"
+  edit: "editar"
+  email: "email"
+  name: "nome"
+  password: "senha"
+  password_confirmation: "confimação de senha"
+  user: "usuário"
+  users: "usuários"
+  save: "salvar"
+  sign_in: "entrar"
+  sign_out: "sair"
+  sign_up: "cadastrar"
+  errors:
+    messages:
+      blank: "não pode ficar em branco"
+      confirmation: "não corresponde a %{attribute}"
+      invalid: "inválido"
+      not_found: "%{record} não encontrado"
+      too_short: "muito curto (no mínimo %{count} caracteres)"
+  flash:
+    users:
+      created: "usuário criado com sucesso"
+      updated: "usuário editado com sucesso"
+      destroyed: "usuário deletado com sucesso"
+    sessions:
+      invalid: "email ou senha inválido"

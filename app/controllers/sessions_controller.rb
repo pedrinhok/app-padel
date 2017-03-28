@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			sign_in(@user)
 			redirect_to users_path
 		else
-			f(:danger, "Invalid email or password")
+			f(:danger, t("flash.sessions.invalid"))
 			render :new
 		end
 	end

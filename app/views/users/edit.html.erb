@@ -1,20 +1,20 @@
-<%= form_for(@user, html: { class: "form-signup margin-top-50 well" }) do |f| %>
+<%= form_for(@user, html: { class: "form-sm well" }) do |f| %>
 
-	<legend>Edit user</legend>
+	<legend><%= "#{T('edit')} #{t('user')}" %></legend>
 
 	<div class="form-group <%= has_error(:name) %>">
-		<%= f.text_field :name, { class: "form-control", placeholder: "Name", autofocus: true } %>
+		<%= f.text_field :name, { class: "form-control", placeholder: T("name"), autofocus: true } %>
 	</div>
 	<div class="form-group <%= has_error(:email) %>">
-		<%= f.email_field :email, { class: "form-control", placeholder: "Email" } %>
+		<%= f.email_field :email, { class: "form-control", placeholder: T("email") } %>
 	</div>
 	<div class="form-group <%= has_error(:password) %>">
-		<%= f.password_field :password, { class: "form-control", placeholder: "Password" } %>
+		<%= f.password_field :password, { class: "form-control", placeholder: T("password") } %>
 	</div>
 	<div class="form-group <%= has_error(:password_confirmation) %>">
-		<%= f.password_field :password_confirmation, { class: "form-control", placeholder: "Password Confirmation" } %>
+		<%= f.password_field :password_confirmation, { class: "form-control", placeholder: T("password_confirmation") } %>
 	</div>
 
-	<%= f.submit "Save", { class: "btn btn-lg btn-primary btn-block" } %>
+	<%= f.submit T("save"), { class: "btn btn-lg btn-primary btn-block" } %>
 
 <% end %>
