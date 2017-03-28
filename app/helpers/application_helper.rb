@@ -8,6 +8,10 @@ module ApplicationHelper
 		flash[type] = messages
 	end
 
+	def glyphicon css
+		"<span class=\"glyphicon glyphicon-#{css}\" aria-hidden=\"true\"></span>".html_safe
+	end
+
 	def active_page(*paths)
 		active = false  
 		paths.each { |path| active ||= current_page?(path) }  
