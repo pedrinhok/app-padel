@@ -1,0 +1,27 @@
+pt:
+  destroy: "destroy."
+  edit: "edit."
+  email: "email."
+  name: "name."
+  password: "password."
+  password_confirmation: "password confirmation."
+  user: "user."
+  users: "users."
+  save: "save."
+  sign_in: "sign in."
+  sign_out: "sign out."
+  sign_up: "sign up."
+  errors:
+    messages:
+      blank: "can't be blank."
+      confirmation: "doesn't match %{attribute}."
+      invalid: "is invalid."
+      not_found: "%{record} not found."
+      too_short: "is too short (minimum is %{count} characters)."
+  flash:
+    users:
+      created: "user was successfully created."
+      updated: "user was successfully updated."
+      destroyed: "user was successfully destroyed."
+    sessions:
+      invalid: "invalid email or password."

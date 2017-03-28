@@ -1,6 +1,10 @@
-<%= form_for(:session, url: sessions_path, html: { class: "form-signin margin-top-50" }) do |f| %>
+<%= form_for(:session, url: sessions_path, html: { class: "form-sm form-signin well" }) do |f| %>
 
-	<h2 class="form-signin-heading"><%= T("sign_in") %></h2>
+	<legend>
+		<%= T("sign_in") %>
+		<%= link_to image_tag("flags/en.svg", size: "16", class: "margin pull-right"), sign_in_path(locale: :en) %>
+		<%= link_to image_tag("flags/pt.svg", size: "16", class: "margin pull-right"), sign_in_path(locale: :pt) %>
+	</legend>
 
 	<%= f.email_field :email, { class: "form-control", placeholder: T("email"), autofocus: true } %>
 	<%= f.password_field :password, { class: "form-control", placeholder: T("password") } %>

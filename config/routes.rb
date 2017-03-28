@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+	scope "(/:locale)" do
 
-	root "sessions#new"
+		root "sessions#new"
 
-  get "sign_in" => "sessions#new"
-  post "sessions" => "sessions#create", as: :sessions
-  delete "sign_out" => "sessions#destroy", as: :sign_out
+		get "sign_in" => "sessions#new"
+		post "sessions" => "sessions#create", as: :sessions
+		delete "sign_out" => "sessions#destroy", as: :sign_out
 
-  resources :users
+		resources :users
 
+	end
 end
