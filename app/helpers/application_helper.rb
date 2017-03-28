@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def T text, params = {}
+		t(text, params).capitalize
+	end
+
 	def f type, messages
 		flash[type] = messages
 	end
